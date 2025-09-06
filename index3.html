@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monopoly Board</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .board-container {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border: 4px solid #2c3e50;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .board-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .monopoly-board {
+            width: 700px;
+            height: 700px;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            border: 3px solid #2c3e50;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .property {
+            border: 1.5px solid #34495e;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            font-size: 9px;
+            font-weight: 600;
+            padding: 4px 2px;
+            position: relative;
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        }
+
+        .property:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .property-name {
+            font-size: 12px;
+            line-height: 1.1;
+            margin-bottom: 2px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .corner {
+            font-size: 11px;
+            font-weight: bold;
+            background-color: #000000;
+        }
+
+        .corner .property-name {
+            font-size: 10px;
+        }
+
+        /* Center area */
+        .center {
+            grid-column: 2 / 10;
+            grid-row: 2 / 10;
+            background: radial-gradient(circle, #dee4e7, #7abae4);
+            border: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .center-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: rgb(7, 7, 7);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .center-subtitle {
+            font-size: 16px;
+            color: #000000;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .u{
+            background: linear-gradient(135deg, #ffffff, #aba8a8);
+            color: rgb(1, 1, 1);
+        }
+        /* Property colors with gradients */
+        .purple { 
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+        #b{
+            background: linear-gradient(135deg, #000000, #000000);
+            color: white;
+        }
+        .brown { 
+            background: linear-gradient(135deg, #d2691e, #8b4513);
+            color: white;
+        }
+        .light-blue { 
+            background: linear-gradient(135deg, #58bfe8, #65cddf);
+            color: #2c3e50;
+        }
+        .pink { 
+            background: linear-gradient(135deg, #ff69b4, #e91e63);
+            color: white;
+        }
+        .orange { 
+            background: linear-gradient(179deg, #ED8936 0%, #F56565 51%, #ECC94B 100%);
+background: -webkit-linear-gradient(179deg, #ED8936 0%, #F56565 51%, #ECC94B 100%);
+background: -moz-linear-gradient(179deg, #ED8936 0%, #F56565 51%, #ECC94B 100%);
+        }
+        .red { 
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+        .yellow { 
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            color: #2c3e50;
+        }
+        .green { 
+            background: linear-gradient(135deg, #187d42, #27ae60);
+            color: white;
+        }
+        .dark-blue { 
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+        .light-green{
+            background: linear-gradient(135deg, #12ab52, #4ee48d);
+            color: white;
+        }
+        .dg{
+            background: linear-gradient(135deg, #0c5202, #036b2e);
+            color: white;
+        }
+        .o{
+            background: linear-gradient(135deg, #d76e23, #d29420);
+            color: white;
+        }
+        .railroad { 
+            background: linear-gradient(135deg, #000000, #000000);
+            color: white;
+        }
+        .utility { 
+            background: linear-gradient(135deg, #040404, #7f8c8d);
+            color: white;
+        }
+        .jail { 
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: white;
+        }
+        .go-to-jail { 
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: white;
+        }
+        .free-parking { 
+            background: linear-gradient(135deg, #16a085, #1abc9c);
+            color: white;
+        }
+        .go { 
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .price {
+            font-size: 10px;
+            font-weight: bold;
+            margin-top: auto;
+            padding: 2px 4px;
+            background: rgba(255,255,255,0.9);
+            color: #2c3e50;
+            border-radius: 8px;
+            min-height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Responsive adjustments for different sections */
+        .top-row { writing-mode: horizontal-tb; }
+        .bottom-row { writing-mode: horizontal-tb; }
+        .left-column { 
+            writing-mode: horizontal-tb;
+            text-orientation: mixed;
+        }
+        .right-column { 
+            writing-mode: horizontal-tb;
+            text-orientation: mixed;
+        }
+
+        /* Grid positions */
+        .top-1 { grid-column: 9; grid-row: 1; }
+        .top-2 { grid-column: 8; grid-row: 1; }
+        .top-3 { grid-column: 7; grid-row: 1; }
+        .top-4 { grid-column: 6; grid-row: 1; }
+        .top-5 { grid-column: 5; grid-row: 1; }
+        .top-6 { grid-column: 4; grid-row: 1; }
+        .top-7 { grid-column: 3; grid-row: 1; }
+        .top-8 { grid-column: 2; grid-row: 1; }
+
+        .right-1 { grid-column: 10; grid-row: 2; }
+        .right-2 { grid-column: 10; grid-row: 3; }
+        .right-3 { grid-column: 10; grid-row: 4; }
+        .right-4 { grid-column: 10; grid-row: 5; }
+        .right-5 { grid-column: 10; grid-row: 6; }
+        .right-6 { grid-column: 10; grid-row: 7; }
+        .right-7 { grid-column: 10; grid-row: 8; }
+        .right-8 { grid-column: 10; grid-row: 9; }
+
+        .bottom-1 { grid-column: 2; grid-row: 10; }
+        .bottom-2 { grid-column: 3; grid-row: 10; }
+        .bottom-3 { grid-column: 4; grid-row: 10; }
+        .bottom-4 { grid-column: 5; grid-row: 10; }
+        .bottom-5 { grid-column: 6; grid-row: 10; }
+        .bottom-6 { grid-column: 7; grid-row: 10; }
+        .bottom-7 { grid-column: 8; grid-row: 10; }
+        .bottom-8 { grid-column: 9; grid-row: 10; }
+
+        .left-1 { grid-column: 1; grid-row: 9; }
+        .left-2 { grid-column: 1; grid-row: 8; }
+        .left-3 { grid-column: 1; grid-row: 7; }
+        .left-4 { grid-column: 1; grid-row: 6; }
+        .left-5 { grid-column: 1; grid-row: 5; }
+        .left-6 { grid-column: 1; grid-row: 4; }
+        .left-7 { grid-column: 1; grid-row: 3; }
+        .left-8 { grid-column: 1; grid-row: 2; }
+
+        .free-parking-corner { grid-column: 1; grid-row: 1; }
+        .jail-corner { grid-column: 10; grid-row: 1; }
+        .go-to-jail-corner { grid-column: 10; grid-row: 10; }
+        .go-corner { grid-column: 1; grid-row: 10; }
+        .ani1{
+            position: relative;
+            top:20%;
+            font-size:larger;
+        }
+        .abcd{
+            font-size: 15px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="board-container">
+        <h1 class="board-title">MONOPOLY BOARD</h1>
+        
+        <div class="monopoly-board">
+            <!-- Center area -->
+            <div class="center">
+                <div class="center-title">MONOPOLY</div>
+                <div class="center-subtitle">Enhanced Edition<br>10×10 Grid</div>
+            </div>
+
+            <!-- Corners -->
+            <div id="b" class="property corner free-parking free-parking-corner">
+                <div class="property-name ani1"><section class="abcd">CHANCE</section></div>
+            </div>
+            <div id="b" class="property corner jail jail-corner">
+                <div class="property-name ani1"> <section class="abcd">JAIL</section></div>
+            </div>
+            <div id="b"class="property corner go-to-jail go-to-jail-corner">
+                <div class="property-name ani1"><section class="abcd">IOT</section></div>
+            </div>
+            <div id="b"class="property corner go go-corner">
+                <div class="property-name ani1"><section class="abcd">START</section></div>
+                
+            </div>
+
+            <!-- Top row -->
+            <div class="property dg top-1">
+                <div class="property-name">Gazebo</div>
+                <div class="price">$60</div>
+            </div>
+            <div class="property dg top-2">
+                <div class="property-name">North<br>Square</div>
+            </div>
+            <div class="property dg top-3">
+                <div class="property-name">VMart</div>
+                <div class="price">$60</div>
+            </div>
+            <div class="property u top-4">
+                <div class="property-name">Water<br>Pump</div>
+                <div class="price">$200</div>
+            </div>
+            <div class="property dark-blue top-5">
+                <div class="property-name">Dominos</div>
+                <div class="price">$200</div>
+            </div>
+            <div class="property dark-blue top-6">
+                <div class="property-name">Gym<br>Khana</div>
+                <div class="price">$100</div>
+            </div>
+            <div class="property o top-7">
+                <div class="property-name">Hunger</div>
+            </div>
+            <div class="property o top-8">
+                <div class="property-name">Aavin</div>
+                <div class="price">$100</div>
+            </div>
+
+            <!-- Right column -->
+            <div class="property brown right-1 right-column">
+                <div class="property-name" cost="">Chota<br>Dhobi</div>
+                <div class="price">$120</div>
+            </div>
+            <div class="property brown right-2 right-column">
+                <div class="property-name">Mess</div>
+                <div class="price">$140</div>
+            </div>
+            <div class="property yellow right-3 right-column">
+                <div class="property-name">A Block</div>
+                <div class="price">$150</div>
+            </div>
+            <div class="property yellow right-4 right-column">
+                <div class="property-name">D1 Block</div>
+                <div class="price">$140</div>
+            </div>
+            <div class="property yellow right-5 right-column ">
+                <div class="property-name">D2 Block</div>
+                <div class="price">$160</div>
+            </div>
+            <div class="property u right-6 right-column">
+                <div class="property-name">Health<br>Center</div>
+                <div class="price">$200</div>
+            </div>
+            <div class="property pink right-7 right-column">
+                <div class="property-name">B Block</div>
+                <div class="price">$180</div>
+            </div>
+            <div class="property pink right-8 right-column">
+                <div class="property-name">C Block</div>
+            </div>
+
+            <!-- Bottom row -->
+            <div class="property orange bottom-1">
+                <div class="property-name">ADMIN<br>BLOCK</div>
+                <div class="price">$180</div>
+            </div>
+            <div class="property purple bottom-2">
+                <div class="property-name">MG<br>Auditorium</div>
+                <div class="price">$200</div>
+            </div>
+            <div class="property purple bottom-3">
+                <div class="property-name">Guest<br>House</div>
+            </div>
+            <div class="property u bottom-4">
+                <div class="property-name">Library</div>
+                <div class="price">$220</div>
+            </div>
+            <div class="property red bottom-5">
+                <div class="property-name">AB-4</div>
+            </div>
+            <div class="property red bottom-6">
+                <div class="property-name">AB-3</div>
+                <div class="price">$220</div>
+            </div>
+            <div class="property red bottom-7">
+                <div class="property-name">AB-2</div>
+                <div class="price">$240</div>
+            </div>
+            <div class="property red bottom-8">
+                <div class="property-name"> AB-1</div>
+                <div class="price">$200</div>
+            </div>
+
+            <!-- Left column -->
+            <div class="property light-blue left-1 left-column">
+                <div class="property-name">Alpha<br>Block</div>
+                <div class="price">$260</div>
+            </div>
+            <div class="property light-blue left-2 left-column">
+                <div class="property-name">Delta<br>Block</div>
+                <div class="price">$260</div>
+            </div>
+            <div class="property light-blue left-3 left-column">
+                <div class="property-name">Sigma<br>Block</div>
+                <div class="price">$150</div>
+            </div>
+            <div class="property u left-4 left-column">
+                <div class="property-name">Electricity</div>
+                <div class="price">$280</div>
+            </div>
+            <div class="property u left-5 left-column">
+                <div class="property-name">Transport</div>
+            </div>
+            <div class="property light-green left-6 left-column">
+                <div class="property-name">Sports</div>
+                <div class="price">$300</div>
+            </div>
+            <div class="property light-green left-7 left-column">
+                <div class="property-name">Parking</div>
+                <div class="price">$300</div>
+            </div>
+            <div class="property light-green left-8 left-column">
+                <div class="property-name">Courier<br>Point</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
