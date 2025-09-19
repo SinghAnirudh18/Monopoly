@@ -82,7 +82,7 @@ class MonopolyGame {
             { action: "move", description: "Go back 3 spaces", value: "back3" },
             { action: "money", description: "Your semester fees are waived! Collect $300", value: 300 },
             { action: "money", description: "Pay for hostel damages - $75", value: -75 },
-            { action: "teleport", description: "Teleport to any property of your choice", value: "teleport" },
+            
             { action: "money", description: "Bank error in your favor - Collect $150", value: 150 },
             { action: "money", description: "You lost your ID card - Pay $40 for replacement", value: -40 }
         ];
@@ -303,7 +303,7 @@ class MonopolyGame {
     upgradeProperty(player, propertyIndex) {
         const property = this.board[propertyIndex];
         const currentRent = this.calculateRent(property);
-        const upgradeCost = Math.floor(currentRent + (property.price * 0.2));
+        const upgradeCost = Math.floor( property.price * 0.5);
         if (property.owner !== player.id || 
             player.money < upgradeCost || 
             property.houses >= 4 ||

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,29 +13,30 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            padding: 10px;
+            padding: 20px;
         }
 
-        /* Mobile First Design */
         .board-container {
-            background: linear-gradient(145deg, #ffffff, #f7fafc);
-            border: 3px solid #2d3748;
-            padding: 15px;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-            max-width: 100%;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border: 4px solid #2c3e50;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 1400px;
             width: 100%;
-            min-height: 100vh;
         }
 
         .board-title {
             text-align: center;
-            font-size: clamp(20px, 5vw, 32px);
+            font-size: 32px;
             font-weight: bold;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #e53e3e, #fd9e02);
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -44,255 +44,119 @@
 
         .game-container {
             display: flex;
-            flex-direction: column;
             gap: 20px;
-            align-items: center;
-        }
-
-        /* Mobile-first board sizing */
-        .monopoly-board {
-            width: min(90vw, 500px);
-            height: min(90vw, 500px);
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            grid-template-rows: repeat(10, 1fr);
-            border: 4px solid #2d3748;
-            background-color: #f7fafc;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-
-        .property {
-            border: 1px solid #4a5568;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
-            font-size: clamp(6px, 1.5vw, 9px);
-            font-weight: 700;
-            padding: clamp(2px, 1vw, 4px);
-            position: relative;
-            transition: all 0.3s ease;
-            background: linear-gradient(145deg, #ffffff, #f7fafc);
-        }
-
-        .property:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-            z-index: 10;
-        }
-
-        .property-name {
-            font-size: clamp(7px, 2vw, 12px);
-            line-height: 1.1;
-            margin-bottom: 2px;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.9);
-            font-weight: 800;
-        }
-
-        .corner {
-            font-size: clamp(8px, 2.2vw, 11px);
-            font-weight: 900;
-            background: linear-gradient(135deg, #1a202c, #2d3748);
-        }
-
-        .corner .property-name {
-            font-size: clamp(8px, 2.5vw, 10px);
-        }
-
-        /* Updated property colors - more distinct and vibrant */
-        .u {
-            background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
-            color: #1a202c;
-            border: 2px solid #4a5568;
-        }
-
-        .purple { 
-            background: linear-gradient(135deg, #805ad5, #6b46c1);
-            color: white;
-        }
-
-        #b {
-            background: linear-gradient(135deg, #1a202c, #2d3748);
-            color: white;
-        }
-
-        .brown { 
-            background: linear-gradient(135deg, #c05621, #9c4221);
-            color: white;
-        }
-
-        .light-blue { 
-            background: linear-gradient(135deg, #63b3ed, #4299e1);
-            color: white;
-        }
-
-        .pink { 
-            background: linear-gradient(135deg, #ed64a6, #d53f8c);
-            color: white;
-        }
-
-        .orange { 
-            background: linear-gradient(135deg, #fd9e02, #e07901);
-            color: white;
-        }
-
-        .red { 
-            background: linear-gradient(135deg, #e53e3e, #c53030);
-            color: white;
-        }
-
-        .yellow { 
-            background: linear-gradient(135deg, #ecc94b, #d69e2e);
-            color: #1a202c;
-        }
-
-        .green { 
-            background: linear-gradient(135deg, #38a169, #2f855a);
-            color: white;
-        }
-
-        .dark-blue { 
-            background: linear-gradient(135deg, #3182ce, #2c5282);
-            color: white;
-        }
-
-        .light-green {
-            background: linear-gradient(135deg, #68d391, #48bb78);
-            color: white;
-        }
-
-        .dg {
-            background: linear-gradient(135deg, #2f855a, #276749);
-            color: white;
-        }
-
-        .o {
-            background: linear-gradient(135deg, #dd6b20, #c05621);
-            color: white;
-        }
-
-        .railroad { 
-            background: linear-gradient(135deg, #2d3748, #1a202c);
-            color: white;
-        }
-
-        .utility { 
-            background: linear-gradient(135deg, #4a5568, #2d3748);
-            color: white;
-        }
-
-        .jail { 
-            background: linear-gradient(135deg, #e07901, #c05621);
-            color: white;
-        }
-
-        .go-to-jail { 
-            background: linear-gradient(135deg, #4a5568, #2d3748);
-            color: white;
-        }
-
-        .free-parking { 
-            background: linear-gradient(135deg, #38a169, #2f855a);
-            color: white;
-        }
-
-        .go { 
-            background: linear-gradient(135deg, #e53e3e, #c53030);
-            color: white;
-        }
-
-        .price {
-            font-size: clamp(7px, 1.8vw, 10px);
-            font-weight: 900;
-            margin-top: auto;
-            padding: 2px 4px;
-            background: rgba(255,255,255,0.95);
-            color: #1a202c;
-            border-radius: 8px;
-            min-height: 14px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            border: 1px solid #e2e8f0;
+            align-items: flex-start;
         }
 
-        /* Enhanced player pieces - much more visible */
-        .player-pieces {
-            position: absolute;
-            bottom: 8px;
-            left: 2px;
+        .game-controls {
+            width: 280px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .game-controls h2 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+
+        .game-controls input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .game-controls button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .game-controls button:hover {
+            background: #2980b9;
+        }
+
+        .player-info {
             display: flex;
-            gap: 2px;
-            flex-wrap: wrap;
-            max-width: 90%;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            font-size: 12px;
         }
 
-        .player-piece {
-            width: clamp(12px, 3vw, 18px);
-            height: clamp(12px, 3vw, 18px);
+        .player-color {
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-            position: relative;
-            animation: playerPulse 2s infinite ease-in-out;
+            margin-right: 10px;
+            border: 2px solid #333;
         }
 
-        @keyframes playerPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        #current-player {
+            margin: 15px 0;
+            padding: 10px;
+            background: #e8f4fc;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
         }
 
-        .player-piece::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            height: 60%;
-            background: rgba(255,255,255,0.8);
-            border-radius: 50%;
+        #roll-dice {
+            background: #e74c3c;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 15px;
         }
 
-        /* New vibrant player colors that don't clash with board */
-        .player-1-color { background: linear-gradient(135deg, #ff1744, #d01749) !important; }
-        .player-2-color { background: linear-gradient(135deg, #00e5ff, #00acc1) !important; }
-        .player-3-color { background: linear-gradient(135deg, #76ff03, #689f38) !important; }
-        .player-4-color { background: linear-gradient(135deg, #ff9100, #f57c00) !important; }
-        .player-5-color { background: linear-gradient(135deg, #e91e63, #ad1457) !important; }
-        .player-6-color { background: linear-gradient(135deg, #9c27b0, #7b1fa2) !important; }
+        #roll-dice:hover {
+            background: #c0392b;
+        }
 
-        /* Player ownership colors - subtle overlays */
+        #roll-dice:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        /* Player colors for owned properties */
         .player-1 { 
-            box-shadow: inset 0 0 0 3px rgba(255, 23, 68, 0.6) !important;
-            background-blend-mode: overlay;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important; 
+            color: white !important; 
         }
         .player-2 { 
-            box-shadow: inset 0 0 0 3px rgba(0, 229, 255, 0.6) !important;
-            background-blend-mode: overlay;
+            background: linear-gradient(135deg, #48dbfb, #0abde3) !important; 
+            color: white !important; 
         }
         .player-3 { 
-            box-shadow: inset 0 0 0 3px rgba(118, 255, 3, 0.6) !important;
-            background-blend-mode: overlay;
+            background: linear-gradient(135deg, #1dd1a1, #10ac84) !important; 
+            color: white !important; 
         }
         .player-4 { 
-            box-shadow: inset 0 0 0 3px rgba(255, 145, 0, 0.6) !important;
-            background-blend-mode: overlay;
-        }
-        .player-5 { 
-            box-shadow: inset 0 0 0 3px rgba(233, 30, 99, 0.6) !important;
-            background-blend-mode: overlay;
-        }
-        .player-6 { 
-            box-shadow: inset 0 0 0 3px rgba(156, 39, 176, 0.6) !important;
-            background-blend-mode: overlay;
+            background: linear-gradient(135deg, #feca57, #ff9f43) !important; 
+            color: white !important; 
         }
 
-        /* House indicators - more visible */
+        /* Owned property price styling */
+        .owned-property .price {
+            background: rgba(255,255,255,0.9) !important;
+            color: #2c3e50 !important;
+        }
+
+        /* House indicators */
         .house-indicator {
             position: absolute;
             bottom: 2px;
@@ -302,71 +166,69 @@
         }
 
         .house {
-            width: clamp(4px, 1.5vw, 7px);
-            height: clamp(4px, 1.5vw, 7px);
-            background-color: #38a169;
+            width: 5px;
+            height: 5px;
+            background-color: #2ecc71;
             border-radius: 2px;
-            border: 1px solid #2f855a;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            border: 1px solid #27ae60;
         }
 
-        /* Owner badge - more prominent */
+        /* Owner badge */
         .owner-badge {
             position: absolute;
             top: 2px;
             right: 2px;
-            width: clamp(8px, 2vw, 12px);
-            height: clamp(8px, 2vw, 12px);
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            border: 1px solid white;
         }
 
-        /* Center area with better mobile scaling */
+        /* Center area with dice and leaderboard */
         .center {
             grid-column: 2 / 10;
             grid-row: 2 / 10;
-            background: radial-gradient(circle, #e2e8f0, #90cdf4);
+            background: radial-gradient(circle, #dee4e7, #7abae4);
             border: none;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-radius: 12px;
-            box-shadow: inset 0 6px 12px rgba(0,0,0,0.3);
-            padding: clamp(10px, 3vw, 20px);
+            border-radius: 8px;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.2);
+            padding: 20px;
             position: relative;
         }
 
         .center-title {
-            font-size: clamp(14px, 4vw, 28px);
-            font-weight: 900;
+            font-size: 28px;
+            font-weight: bold;
             margin-bottom: 10px;
-            color: #1a202c;
+            color: #2c3e50;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .dice-container {
             display: flex;
-            gap: clamp(5px, 2vw, 10px);
-            margin: 10px 0;
+            gap: 10px;
+            margin: 15px 0;
             align-items: center;
             justify-content: center;
         }
 
         .dice {
-            width: clamp(35px, 8vw, 50px);
-            height: clamp(35px, 8vw, 50px);
-            background: linear-gradient(145deg, #ffffff, #e2e8f0);
-            border: 3px solid #2d3748;
-            border-radius: 12px;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 2px solid #2c3e50;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: clamp(18px, 5vw, 24px);
-            font-weight: 900;
-            color: #1a202c;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
         }
 
@@ -381,258 +243,101 @@
             75% { transform: rotate(270deg) scale(1.1); }
         }
 
-        /* Mobile-optimized game controls */
-        .game-controls {
-            width: 100%;
-            max-width: 400px;
-            background: linear-gradient(145deg, #ffffff, #f7fafc);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            border: 2px solid #e2e8f0;
-        }
-
-        .game-controls h2 {
-            margin-bottom: 15px;
-            color: #1a202c;
-            font-size: clamp(16px, 4vw, 18px);
-            font-weight: 800;
-            text-align: center;
-        }
-
-        .game-controls input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 16px;
-            background: #f7fafc;
-        }
-
-        .game-controls input:focus {
-            border-color: #3182ce;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
-        }
-
-        .game-controls button {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #3182ce, #2c5282);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .game-controls button:hover:not(:disabled) {
-            background: linear-gradient(135deg, #2c5282, #2a4365);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        }
-
-        .game-controls button:active {
-            transform: translateY(0);
-        }
-
-        /* Enhanced player info display */
-        .player-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            padding: 12px;
-            background: linear-gradient(135deg, #f7fafc, #edf2f7);
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            border: 2px solid #e2e8f0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .player-info-left {
-            display: flex;
-            align-items: center;
-        }
-
-        .player-color {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            margin-right: 12px;
-            border: 3px solid white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-
-        .player-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .player-name {
-            font-weight: 700;
-            color: #1a202c;
-        }
-
-        .player-money {
-            font-size: 12px;
-            color: #4a5568;
-        }
-
-        .player-valuation {
-            font-size: 12px;
-            font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 6px;
-            background: linear-gradient(135deg, #68d391, #38a169);
-            color: white;
-        }
-
-        #current-player {
-            margin: 15px 0;
-            padding: 15px;
-            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
-            border-radius: 12px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 700;
-            color: #1a202c;
-            border: 2px solid #38a169;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        #roll-dice {
-            background: linear-gradient(135deg, #e53e3e, #c53030);
-            font-weight: 900;
-            font-size: 18px;
-            padding: 18px;
-        }
-
-        #roll-dice:hover:not(:disabled) {
-            background: linear-gradient(135deg, #c53030, #9c2b2b);
-        }
-
-        #roll-dice:disabled {
-            background: linear-gradient(135deg, #a0aec0, #718096);
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Leaderboard in center - mobile optimized */
         .leaderboard {
-            background: rgba(255,255,255,0.95);
-            padding: clamp(8px, 3vw, 15px);
-            border-radius: 12px;
-            margin-top: 8px;
-            min-width: clamp(150px, 40vw, 200px);
-            border: 2px solid #e2e8f0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            min-width: 200px;
         }
 
         .leaderboard h3 {
             text-align: center;
-            margin-bottom: 8px;
-            color: #1a202c;
-            font-size: clamp(10px, 3vw, 14px);
-            font-weight: 800;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-size: 14px;
         }
 
-        .player-valuation-item {
+        .player-valuation {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 4px;
-            padding: 4px 6px;
-            background: #f7fafc;
-            border-radius: 6px;
-            font-size: clamp(9px, 2.5vw, 12px);
-            font-weight: 600;
+            margin-bottom: 5px;
+            padding: 3px 5px;
+            background: #f8f9fa;
+            border-radius: 3px;
+            font-size: 12px;
         }
 
-        /* Message display - mobile optimized */
+        /* Message display */
         .game-message {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(145deg, #ffffff, #f7fafc);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             z-index: 1000;
             text-align: center;
             min-width: 300px;
-            max-width: 90vw;
-            border: 3px solid #2d3748;
+            max-width: 500px;
+            border: 3px solid #2c3e50;
         }
 
         .game-message h2 {
-            color: #1a202c;
+            color: #2c3e50;
             margin-bottom: 15px;
-            font-size: clamp(18px, 5vw, 24px);
-            font-weight: 800;
+            font-size: 24px;
         }
 
         .game-message p {
-            color: #4a5568;
+            color: #34495e;
             margin-bottom: 20px;
-            font-size: clamp(14px, 4vw, 16px);
-            line-height: 1.5;
-            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.4;
         }
 
         .message-buttons {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             justify-content: center;
-            flex-wrap: wrap;
         }
 
         .message-buttons button {
-            padding: 12px 20px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 14px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            min-width: 100px;
+            font-weight: bold;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #3182ce, #2c5282);
+            background: #3498db;
             color: white;
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg, #2c5282, #2a4365);
-            transform: translateY(-2px);
+            background: #2980b9;
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #a0aec0, #718096);
+            background: #95a5a6;
             color: white;
         }
 
         .btn-secondary:hover {
-            background: linear-gradient(135deg, #718096, #4a5568);
-            transform: translateY(-2px);
+            background: #7f8c8d;
         }
 
         .btn-success {
-            background: linear-gradient(135deg, #38a169, #2f855a);
+            background: #27ae60;
             color: white;
         }
 
         .btn-success:hover {
-            background: linear-gradient(135deg, #2f855a, #276749);
-            transform: translateY(-2px);
+            background: #229954;
         }
 
         .overlay {
@@ -641,24 +346,186 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.5);
             z-index: 999;
         }
 
-        /* Game log - mobile optimized */
-        #game-log {
-            height: 150px;
-            overflow-y: auto;
-            background: linear-gradient(135deg, #f7fafc, #edf2f7);
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            margin-bottom: 15px;
-            border: 2px solid #e2e8f0;
-            line-height: 1.4;
+        .monopoly-board {
+            width: 700px;
+            height: 700px;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            border: 3px solid #2c3e50;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        /* Grid positions remain the same */
+        .property {
+            border: 1.5px solid #34495e;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            font-size: 9px;
+            font-weight: 600;
+            padding: 4px 2px;
+            position: relative;
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        }
+
+        .property:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .property-name {
+            font-size: 12px;
+            line-height: 1.1;
+            margin-bottom: 2px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .corner {
+            font-size: 11px;
+            font-weight: bold;
+            background-color: #000000;
+        }
+
+        .corner .property-name {
+            font-size: 10px;
+        }
+
+        .u{
+            background: linear-gradient(135deg, #ffffff, #aba8a8);
+            color: rgb(1, 1, 1);
+        }
+        /* Property colors with gradients */
+        .purple { 
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+        #b{
+            background: linear-gradient(135deg, #000000, #000000);
+            color: white;
+        }
+        .brown { 
+            background: linear-gradient(135deg, #d2691e, #8b4513);
+            color: white;
+        }
+        .light-blue { 
+            background: linear-gradient(135deg, #58bfe8, #65cddf);
+            color: #2c3e50;
+        }
+        .pink { 
+            background: linear-gradient(135deg, #ff69b4, #e91e63);
+            color: white;
+        }
+        .orange { 
+            background: linear-gradient(179deg, #ED8936 0%, #F56565 51%, #ECC94B 100%);
+        }
+        .red { 
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+        .yellow { 
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            color: #2c3e50;
+        }
+        .green { 
+            background: linear-gradient(135deg, #187d42, #27ae60);
+            color: white;
+        }
+        .dark-blue { 
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+        .light-green{
+            background: linear-gradient(135deg, #12ab52, #4ee48d);
+            color: white;
+        }
+        .dg{
+            background: linear-gradient(135deg, #0c5202, #036b2e);
+            color: white;
+        }
+        .o{
+            background: linear-gradient(135deg, #d76e23, #d29420);
+            color: white;
+        }
+        .railroad { 
+            background: linear-gradient(135deg, #000000, #000000);
+            color: white;
+        }
+        .utility { 
+            background: linear-gradient(135deg, #040404, #7f8c8d);
+            color: white;
+        }
+        .jail { 
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: white;
+        }
+        .go-to-jail { 
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: white;
+        }
+        .free-parking { 
+            background: linear-gradient(135deg, #16a085, #1abc9c);
+            color: white;
+        }
+        .go { 
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .price {
+            font-size: 10px;
+            font-weight: bold;
+            margin-top: auto;
+            padding: 2px 4px;
+            background: rgba(255,255,255,0.9);
+            color: #2c3e50;
+            border-radius: 8px;
+            min-height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Player positions */
+        .player-pieces {
+            position: absolute;
+            bottom: 15px;
+            left: 2px;
+            display: flex;
+            gap: 1px;
+            flex-wrap: wrap;
+        }
+
+        .player-piece {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            border: 1px solid white;
+        }
+
+        /* Responsive adjustments for different sections */
+        .top-row { writing-mode: horizontal-tb; }
+        .bottom-row { writing-mode: horizontal-tb; }
+        .left-column { 
+            writing-mode: horizontal-tb;
+            text-orientation: mixed;
+        }
+        .right-column { 
+            writing-mode: horizontal-tb;
+            text-orientation: mixed;
+        }
+
+        /* Grid positions */
         .top-1 { grid-column: 9; grid-row: 1; }
         .top-2 { grid-column: 8; grid-row: 1; }
         .top-3 { grid-column: 7; grid-row: 1; }
@@ -699,78 +566,13 @@
         .jail-corner { grid-column: 10; grid-row: 1; }
         .go-to-jail-corner { grid-column: 10; grid-row: 10; }
         .go-corner { grid-column: 1; grid-row: 10; }
-
-        .ani1 {
+        .ani1{
             position: relative;
-            top: 20%;
-            font-size: clamp(10px, 3vw, 16px);
+            top:20%;
+            font-size:larger;
         }
-
-        .abcd {
-            font-size: clamp(10px, 3vw, 15px);
-        }
-
-        /* Tablet adjustments */
-        @media (min-width: 768px) {
-            .game-container {
-                flex-direction: row;
-                justify-content: center;
-                align-items: flex-start;
-            }
-
-            .monopoly-board {
-                width: min(60vw, 600px);
-                height: min(60vw, 600px);
-            }
-
-            .game-controls {
-                width: 300px;
-            }
-        }
-
-        /* Desktop adjustments */
-        @media (min-width: 1024px) {
-            .board-container {
-                padding: 25px;
-            }
-
-            .monopoly-board {
-                width: 700px;
-                height: 700px;
-            }
-
-            .game-controls {
-                width: 320px;
-            }
-
-            .property {
-                font-size: 9px;
-                padding: 4px 2px;
-            }
-
-            .property-name {
-                font-size: 12px;
-            }
-
-            .price {
-                font-size: 10px;
-            }
-
-            .player-piece {
-                width: 16px;
-                height: 16px;
-            }
-        }
-
-        /* Extra small devices */
-        @media (max-width: 360px) {
-            .board-container {
-                padding: 8px;
-            }
-            
-            .board-title {
-                margin-bottom: 10px;
-            }
+        .abcd{
+            font-size: 15px;
         }
     </style>
 </head>
@@ -1038,7 +840,7 @@
             
             <div class="game-controls">
                 <h2>Game Log</h2>
-                <div id="game-log" style="height: 150px; overflow-y: auto; background: linear-gradient(135deg, #f7fafc, #edf2f7); padding: 12px; border-radius: 8px; font-size: 12px; margin-bottom: 15px; border: 2px solid #e2e8f0; line-height: 1.4;">
+                <div id="game-log" style="height: 200px; overflow-y: auto; background: #f8f9fa; padding: 10px; border-radius: 5px; font-size: 12px; margin-bottom: 15px;">
                     <p>Welcome to Monopoly! Join the game to start playing.</p>
                 </div>
                 
@@ -1056,7 +858,6 @@
         <p id="message-text"></p>
         <div class="message-buttons" id="message-buttons"></div>
     </div>
-
 
 
 <script src="/socket.io/socket.io.js"></script>
@@ -1381,62 +1182,48 @@
         }
         return valuation;
     }
-    function updatePropertyOwnership() {
-    if (!gameState.board) return;
     
-    gameState.board.forEach((property, index) => {
-        const propertyElement = document.querySelector(`[data-position="${index}"]`);
-        if (!propertyElement) return;
+    function updatePropertyOwnership() {
+        if (!gameState.board) return;
         
-        propertyElement.classList.remove('player-1', 'player-2', 'player-3', 'player-4', 'player-5', 'player-6', 'owned-property');
-        
-        const existingBadge = propertyElement.querySelector('.owner-badge');
-        const existingHouses = propertyElement.querySelector('.house-indicator');
-        if (existingBadge) existingBadge.remove();
-        if (existingHouses) existingHouses.remove();
-        
-        // Update price display to show rent for owned properties
-        const priceElement = propertyElement.querySelector('.price');
-        if (priceElement && property.price) {
+        gameState.board.forEach((property, index) => {
+            const propertyElement = document.querySelector(`[data-position="${index}"]`);
+            if (!propertyElement) return;
+            
+            propertyElement.classList.remove('player-1', 'player-2', 'player-3', 'player-4', 'owned-property');
+            
+            const existingBadge = propertyElement.querySelector('.owner-badge');
+            const existingHouses = propertyElement.querySelector('.house-indicator');
+            if (existingBadge) existingBadge.remove();
+            if (existingHouses) existingHouses.remove();
+            
             if (property.owner) {
-                // Calculate and show rent
-                let rent = Math.floor(property.price * 0.1); // Base rent is 10% of property price
-                if (property.houses) {
-                    rent = Math.floor(property.price * 0.1 * (1 + property.houses * 0.5)); // Increase rent by 50% per house
-                }
-                priceElement.textContent = `Rent: $${rent}`;
-            } else {
-                // Show original price for unowned properties
-                priceElement.textContent = `$${property.price}`;
-            }
-        }
-        
-        if (property.owner) {
-            const playerIndex = gameState.players.findIndex(p => p.id === property.owner);
-            if (playerIndex !== -1) {
-                propertyElement.classList.add(`player-${playerIndex + 1}`, 'owned-property');
-                
-                const ownerBadge = document.createElement('div');
-                ownerBadge.className = 'owner-badge';
-                ownerBadge.style.background = `linear-gradient(135deg, ${playerColors[playerIndex]}, ${playerColors[playerIndex]}dd)`;
-                propertyElement.appendChild(ownerBadge);
-                
-                if (property.houses > 0) {
-                    const houseIndicator = document.createElement('div');
-                    houseIndicator.className = 'house-indicator';
+                const playerIndex = gameState.players.findIndex(p => p.id === property.owner);
+                if (playerIndex !== -1) {
+                    propertyElement.classList.add(`player-${playerIndex + 1}`, 'owned-property');
                     
-                    for (let i = 0; i < Math.min(property.houses, 4); i++) {
-                        const house = document.createElement('div');
-                        house.className = 'house';
-                        houseIndicator.appendChild(house);
+                    const ownerBadge = document.createElement('div');
+                    ownerBadge.className = 'owner-badge';
+                    ownerBadge.style.backgroundColor = playerColors[playerIndex];
+                    propertyElement.appendChild(ownerBadge);
+                    
+                    if (property.houses > 0) {
+                        const houseIndicator = document.createElement('div');
+                        houseIndicator.className = 'house-indicator';
+                        
+                        for (let i = 0; i < Math.min(property.houses, 4); i++) {
+                            const house = document.createElement('div');
+                            house.className = 'house';
+                            houseIndicator.appendChild(house);
+                        }
+                        
+                        propertyElement.appendChild(houseIndicator);
                     }
-                    
-                    propertyElement.appendChild(houseIndicator);
                 }
             }
-        }
-    });
-}
+        });
+    }
+    
     function updatePlayerPositions() {
         document.querySelectorAll('.player-pieces').forEach(container => {
             container.innerHTML = '';
